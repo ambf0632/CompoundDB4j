@@ -1,4 +1,4 @@
-# [ChEMBL](https://github.com/sarvanideekshitula/ChEMBL)
+# ChEMBL
 **Pre-requisites**: 
 
 1. MySQL installed in your local system. 
