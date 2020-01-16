@@ -1,3 +1,3 @@
-# DBIntegration
+# CompoundDB4j
 
-ChEMBL Integration is here https://github.com/sarvanideekshitula/ChEMBL 
+This project contains the sources for integration of bio databases - ChEMBL and DrugBank.
