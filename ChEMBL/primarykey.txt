@@ -1,0 +1,15 @@
+chembl_id_lookup chembl_id
+molecule_dictionary molregno
+compound_records record_id
+molecule_synonyms molsyn_id
+source src_id
+drug_mechanism mec_id
+target_dictionary tid
+mechanism_refs mecref_id
+drug_indication drugind_id
+indication_refs indref_id
+activities activity_id
+assays assay_id
+target_components targcomp_id
+component_sequences component_id
+compound_structural_alerts cpd_str_alert_id
