@@ -1,0 +1,30 @@
+﻿Cypher commands
+
+
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "http://localhost/chembl_id_lookup.csv" AS row
+CREATE (:CHEMBL_ID_LOOKUP {CHEMBL_ID: row.chembl_id, ENTITY_TYPE: row.entitiy_type, ENTITY_ID: row.entity_id, STATUS: row.status});
+CREATE INDEX ON :CHEMBL_ID_LOOKUP(CHEMBL_ID)
+
+
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "http://localhost/molecule_dictionary.csv" AS row FIELDTERMINATOR ‘\t’
+CREATE (:MOLECULE_DICTIONARY{MOLREGNO: row.molregno, pref_name: row.pref_name, chembl_id:row.chembl_id, max_phase:row.max_phase, molecule_type:row.molecule_type, oral:row.oral, parental:row.parental, topical:row.topical,black_box_warning:row.black_box_warning, first_in_class:row.first_in_class, chirality:row.chirality, prodrug:row.prodrug, availability_type:row.availability_type});
+
+
+USING PERIODIC COMMIT
+LOAD CSV WITH HEADERS FROM "http://localhost/compound_structures.csv" AS row
+CREATE (:COMPOUND_STRUCTURES{MOLREGNO: row.molregno, molfile: row.molfile, standard_inchi: row.standard_inchi, standard_inchi_key: row.standard_inchi_key, canonical_smiles: row.canonical_smiles});
+
+
+Queries:
+
+
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(c:molecule_synonyms) match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(d:compound_properties) match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(e:compound_records)-[:child_of]-(f:source) 
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(g:drug_mechanism)-[:child_of]-(h:mechanism_refs) 
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(g:drug_mechanism)-[:child_of]-(i:target_dictionary) 
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(j:drug_indication)-[:child_of]-(k:indication_refs) 
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(l:activities)-[:child_of]-(m:assays)-[:child_of]-(n:source) 
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(l:activities)-[:child_of]-(m:assays)-[:child_of]-(o:target_dictionary)-[:child_of]-(p:target_components)-[:child_of]-(q:component_sequences) 
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(l:activities)-[:child_of]-(r:assays)-[:child_of]-(s:target_dictionary) 
+match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(t:compound_properties) match (a:chembl_id_lookup)-[:child_of]-(b:molecule_dictionary)-[:child_of]-(u:compound_structural_alerts) where a.chembl_id = "CHEMBL3544914" return a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u
