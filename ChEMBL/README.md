@@ -7,9 +7,9 @@
 
 **Step-1**: Download the Chembl_24 database and load the dump file into Mysql in your local system.
 
-**Step-2**: Run mytocsv.py file in the terminal. You can skip the step1 by directly downloading the CSV files from [here](https://drive.google.com/open?id=1NrFi96gQ_8VB8cHya86VxAwtralAA6IN).
+**Step-2**: Run convertToCSV.py file in the terminal. You can skip the step1 by directly downloading the CSV files from [here](https://drive.google.com/open?id=1NrFi96gQ_8VB8cHya86VxAwtralAA6IN).
 
-(This will create the CSV files with required columns. The required columns list should be in sch.txt file)
+(This will create the CSV files with required columns. The required columns list should be in schema_select_tables.txt file)
 
 **Note**: Change the user, password and db according to your MySQL information.
 
@@ -22,17 +22,11 @@
 
 Now, start the graph.
 
-**Step-4**: Run graphs.py file (Before that comment the line relationship() at the end of the page.)
+**Step-4**: Make changes in exportCSV function, change the directory of cvs files accordingly. Also make required changes user and password which are mentioned at the end of the page. 
 
-**Step-5**: After execution uncomment relationship() and comment export() and run the file again.
+**Step-5**: graphs.py files contains different function exportCSV - for exporting CSV data into neo4j ,combine_nodes() - for merging two different types of nodes into a single node based on their primary keys, relationships() for creating relations between different nodes. Run graph.py file in your desktop. After the execution of that file, the data we require is loaded into Neo4J as per the schema.
 
-**Note**: This may take some time.
-
-After the execution of that file, the data we require is loaded into Neo4J. Now, you can play with the graph by giving Cypher commands.
-
-The Cypher commands to get particular data corresponding to each drug in https://www.ebi.ac.uk/chembl/drugstore are there in commands.txt file.
-
-**Merge nodes**: The code to merge two nodes is in combine_nodes.py. We can run the file using the format present in readme_combine_nodes.
-
-This is how we merged the nodes:
+This is how we merged the nodes and how we formed relations among different nodes:
 ![alt text](https://github.com/ambf0632/compoundDB4j/blob/master/ChEMBL/chembl_diagram_with_Chembl_er_schema.png)
+
+**Note**: running graph.py file may take some time.
