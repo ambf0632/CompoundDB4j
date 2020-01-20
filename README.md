@@ -2,9 +2,6 @@
 
 This project contains the sources for integration of bio databases - ChEMBL and DrugBank.
 
-neo4j_Chembl_DrugBank.db is an integrated database file for CompoundDB4j. (available for download from )
-
-
 
 # Installation & Setup
 
