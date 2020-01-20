@@ -12,7 +12,7 @@ The prepared program generates csv/tsv files to integrate the DrugBank informati
 
 This should have the form:
 
-![er_diagram](https://github.com/ckoenigs/DrugBank_to_Neo4j/blob/master/drugbank_er_final.png)
+![er_diagram](https://github.com/ckoenigs/DrugBank_to_Neo4j/blob/master/drugbank_er_new.png)
 
 The Compound has so many properties:
 
