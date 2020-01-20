@@ -8,15 +8,16 @@ neo4j_Chembl_DrugBank.db is an integrated database file for CompoundDB4j. (avail
 
 # Installation & Setup
 
-* Unzip the file from the above share - https://agbi.techfak.uni-bielefeld.de/CompoundDB4j/
 * Install neo4j community edition from neo4j download center: https://neo4j.com/download-center/#community
   (We used Version 3.2.14 )
-* In neo4j Community folder change the configuration file : neo4j_community/conf/neo4j.conf as follows:
+* Download and Unzip the file from the above share - https://agbi.techfak.uni-bielefeld.de/CompoundDB4j
+* Copy the unzipped file to data folder of neo4j (e.g. neo4j-community-3.2.14/data)
+* In neo4j Community folder change the configuration file : conf/neo4j.conf as follows:
     *  Comment this line "dbms.directories.import=import"
     *  Change the value of this line "dbms.security.auth_enabled=true" to false.
     *  Change the value of this line "dbms.memory.heap.max_size=1G" to 10G
-    *  Add this line "dbms.security.allow_csv_import_from_file_urls=true"
-    *  Uncomment  and change the value as "dbms.active_database=neo4j_Chembl_Drugbank.db" 
+    *  Add this line "dbms.security.allow_csv_import_from_file_urls=true"      
+    *  Uncomment  and change the value as "dbms.active_database=CompoundDB4j.db" 
     
 * Save the file
 * Open the terminal and run the command ./bin/neo4j console
