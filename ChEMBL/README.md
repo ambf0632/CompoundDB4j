@@ -5,7 +5,7 @@
 2. Neo4J-Community edition Application installed in your system. (refer https://neo4j.com/ if you have any queries)
 3. Install py2neo using the command (sudo pip install py2neo).
 
-**Step-1**: Download the Chembl_24 database and load the dump file into Mysql in your local system.
+**Step-1**: Download the Chembl_24 database and load the dump file into MySQL in your local system.
 
 **Step-2**: Run convertToCSV.py file in the terminal. You can skip the step1 by directly downloading the CSV files from [here](https://drive.google.com/open?id=1NrFi96gQ_8VB8cHya86VxAwtralAA6IN).
 
@@ -22,11 +22,11 @@
 
 Now,to start the graph, open terminal and go to neo4j community folder and run the following command : ./bin/neo4j console 
 
-**Step-4**: Make changes in exportCSV function, change the directory of cvs files accordingly. Also make required changes user and password which are mentioned at the end of the page. 
+**Step-4**: Make changes in exportCSV function of graphs.py file, change the directory of csv files accordingly. Also make required changes user and password which are mentioned at the end of file. 
 
-**Step-5**: graphs.py files contains different function exportCSV - for exporting CSV data into neo4j ,combine_nodes() - for merging two different types of nodes into a single node based on their primary keys, relationships() for creating relations between different nodes. Run graph.py file in your desktop in another terminal. After the execution of that file, the data we require is loaded into Neo4J as per the schema. exportCSV function exports all tables of chembl as nodes eventhough they are not mentioned in the schema diagram below.
+**Step-5**: graphs.py files contains different function exportCSV - for exporting CSV data into neo4j ,combine_nodes() - for merging two different types of nodes into a single node based on their primary keys, relationships() for creating relations between different nodes. Run graphs.py file in your desktop in another terminal. After the execution of that file, the data we require is loaded into Neo4J as per the schema. exportCSV function can be used to export all the tables of chembl as nodes (eventhough they are not mentioned in the below schema diagram)
 
 This is how we merged the nodes and how we formed relations among different nodes:
 ![alt text](https://github.com/ambf0632/compoundDB4j/blob/master/ChEMBL/chembl_diagram_with_Chembl_er_schema.png)
 
-**Note**: running graph.py file may take some time.
+**Note**: running graphs.py file may take some time. This is because of huge number of records of ChEMBL and the imports happen with periodic execution of cypher queries
