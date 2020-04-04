@@ -5,7 +5,7 @@ def exportCSV(file):
         lines = f.readlines()
         for line in lines:
             i = 0
-            query = '''USING PERIODIC COMMIT LOAD CSV WITH HEADERS FROM \"file:///home/susmitha/Documents/neo4j_chembl/neo4j-community-3.2.14/import/Csv_files/'''
+            query = '''USING PERIODIC COMMIT LOAD CSV WITH HEADERS FROM \"file:///sas/vidhya/CompoundDb4j/chembl_26_csv/'''
             for word in line.split():
                 if i==0:
                     query = query + word + ".csv\" AS row FIELDTERMINATOR '\t' CREATE (:"+word+"{"
@@ -171,10 +171,10 @@ def relationships_without_property(from_node, to_node, pk, relation_name):
 
 uri = "bolt://localhost:7687"
 user = "neo4j"
-password = "chembl"
+password = "yourpassword"
 graph = Graph(uri=uri, user=user, password=password)
 
-exportCSV("sch.txt")
+exportCSV("schema_select_tables.txt")
 
 combine_nodes("molecule_dictionary", "molecule_synonyms", "molregno") 
 combine_nodes("molecule_dictionary", "compound_structures", "molregno") 
