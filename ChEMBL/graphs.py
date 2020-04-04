@@ -79,7 +79,7 @@ def relationships():
                     i=i+1
                 else:
                     keys.append(word)
-    with open("sch.txt") as f:
+    with open("schema_select_tables.txt") as f:
         lines = f.readlines()
         for line in lines:
             i=0
