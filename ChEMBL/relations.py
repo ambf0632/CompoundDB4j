@@ -2,7 +2,8 @@ from py2neo import Graph, Node, Relationship
 import csv
 
 def chembl_drugbank_relations():
-    with open('/home/susmitha/V/outputExactMatches/exact_outallmatches_unique_salt_chemblid_drugnames.tsv', 'r') as rf:
+    #path to file where we have all matches between chembl and drugbank for compounds or salts
+    with open('/sas/vidhya/CompoundDb4j/dataIOnew/out/exact_outallmatches_unique_salt_chemblid_drugnames.tsv', 'r') as rf:
         data = [row for row in csv.reader(rf)]
         cnt=0
         for i in range(0, len(data)):
