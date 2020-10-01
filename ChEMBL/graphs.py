@@ -5,7 +5,7 @@ def exportCSV(file):
         lines = f.readlines()
         for line in lines:
             i = 0
-            query = '''USING PERIODIC COMMIT LOAD CSV WITH HEADERS FROM \"file:///home/susmitha/Documents/neo4j_chembl/neo4j-community-3.2.14/import/Csv_files/'''
+            query = '''USING PERIODIC COMMIT LOAD CSV WITH HEADERS FROM \"file:///sas/vidhya/CompoundDb4j/chembl_26_csv/'''
             for word in line.split():
                 if i==0:
                     query = query + word + ".csv\" AS row FIELDTERMINATOR '\t' CREATE (:"+word+"{"
@@ -79,7 +79,7 @@ def relationships():
                     i=i+1
                 else:
                     keys.append(word)
-    with open("sch.txt") as f:
+    with open("schema_select_tables.txt") as f:
         lines = f.readlines()
         for line in lines:
             i=0
@@ -171,10 +171,18 @@ def relationships_without_property(from_node, to_node, pk, relation_name):
 
 uri = "bolt://localhost:7687"
 user = "neo4j"
-password = "chembl"
+password = "yourpassword"
 graph = Graph(uri=uri, user=user, password=password)
-"""
-exportCSV("sch.txt")
+
+exportCSV("schema_select_tables.txt")
+
+combine_nodes("molecule_dictionary", "molecule_synonyms", "molregno") 
+combine_nodes("molecule_dictionary", "compound_structures", "molregno") 
+combine_nodes("molecule_dictionary", "compound_properties", "molregno") 
+combine_nodes("molecule_dictionary", "chembl_id_lookup", "chembl_id") 
+combine_nodes("assays", "chembl_id_lookup", "chembl_id")
+combine_nodes("target_dictionary", "chembl_id_lookup", "chembl_id")
+combine_nodes("mechanism_refs", "drug_mechanism", "mec_id")
 
 relationships_without_property("Compound","Compound_records","molregno","Compound_Compound_records")
 relationships_without_property("Compound","Induces","molregno","Compound_Induces")
@@ -199,4 +207,3 @@ relationships_without_property("Target","Assay","tid","assays")
 relations("Compound","Assay","activities","molregno","assay_id","inhibits_activates")
 relations("Compound","Structure_Alert","compound_structural_alert","molregno","alert_id","has")
 relations("Component","Target","target_components","component_id","tid","part_f")
-"""
