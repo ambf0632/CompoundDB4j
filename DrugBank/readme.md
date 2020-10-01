@@ -1,6 +1,7 @@
 # DrugBank_to_Neo4j
 This integrates all open source data of DrugBank into Neo4j.
 
+
 This integrated DrugBank (https://www.drugbank.ca/downloads) into Neo4j, but first the DrugBank data are formed into tsv file with use of https://github.com/dhimmel/drugbank/blob/gh-pages/parse.ipynb
 with some changes, so that also more properties and relationships are extracted. The results are multiple tsv files and not only one.
 
@@ -12,7 +13,8 @@ The prepared program generates csv/tsv files to integrate the DrugBank informati
 
 This should have the form:
 
-![er_diagram](https://github.com/ckoenigs/DrugBank_to_Neo4j/blob/master/drugbank_er.png)
+![er_diagram](https://github.com/ckoenigs/DrugBank_to_Neo4j/blob/master/drugbank_er_final.png)
+
 
 The Compound has so many properties:
 
@@ -20,8 +22,6 @@ The Compound has so many properties:
 
 The Relationships have also some properties:
 
-![er_diagram](https://github.com/ckoenigs/DrugBank_to_Neo4j/blob/master/drugbank_er_rela.png)
-
-
+![er_diagram](https://github.com/ckoenigs/DrugBank_to_Neo4j/blob/master/drugbank_er_rela_2.png)
 
 Link: https://github.com/ckoenigs/DrugBank_to_Neo4j
