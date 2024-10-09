@@ -7,7 +7,7 @@ This project contains the sources for integration of bio databases - ChEMBL and 
 
 * Install Neo4j community edition from neo4j download center: https://neo4j.com/download-center/#community
   (We used Version 3.2.14 )
-* Download and Unzip the file from the above share - https://agbi.techfak.uni-bielefeld.de/CompoundDB4j
+* Download and Unzip the file from the above share - [https://doi.org/10.5281/zenodo.13906923](https://doi.org/10.5281/zenodo.13906923)
 * Copy the unzipped file to data folder of Neo4j (e.g. neo4j-community-3.5.16/data/database)
 * In Neo4j Community folder change the configuration file : conf/neo4j.conf as follows:
     *  Comment this line "dbms.directories.import=import"
